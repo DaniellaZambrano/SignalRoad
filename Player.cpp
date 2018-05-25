@@ -1,5 +1,8 @@
 #include "Player.H"
 #include <QKeyEvent>
+#include <QList>
+#include <typeinfo>
+
 
 Player::Player(QGraphicsItem *parent) : QGraphicsPixmapItem(parent)
 {
@@ -51,4 +54,19 @@ void Player::emerge()
     //create an enemy
     Enemy *enemy = new Enemy();
     scene()->addItem(enemy);
+
+
+//    //Collide with the player
+//    QList <QGraphicsItem *> collide = collidingItems();
+
+//    for(int i = 0, n = collide.size(); i < n; i++)
+//    {
+//        if(typeid(*(collide[i])) == typeid (Enemy))
+//        {
+//            //decrease health
+//            windowMain->health->decrease();
+
+//            qDebug() << "collision";
+//        }
+//    }
 }

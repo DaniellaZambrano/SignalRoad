@@ -16,6 +16,7 @@
 
 
 #include "Player.H"
+#include "Health.H"
 
 class MainWindow : public QMainWindow
 {
@@ -31,6 +32,7 @@ public:
     QGraphicsView *view;
 
     Player *player;
+    Health * health;
 };
 
 

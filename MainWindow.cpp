@@ -36,16 +36,22 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 
     //Create player
     player = new Player;
-    player->setPos((2*scene->width()/2) - (player->pixmap().width()),
+    player->setPos((scene->width()) - (player->pixmap().width()),
                    (scene->height()/2) + (player->pixmap().height()/15));
     player->setFlag(QGraphicsItem::ItemIsFocusable);
     player->setFocus();
     scene->addItem(player);
 
+    //Draw health
+    health = new Health();
+    health->setPos(health->x()+10, scene->height()/6 + health->y());
+    scene->addItem(health);
+
     //delay enemies
     QTimer * timer = new QTimer();
     QObject::connect(timer,SIGNAL(timeout()),player,SLOT(emerge()));
     timer->start(2000);
+
 
     setCentralWidget(view);
 

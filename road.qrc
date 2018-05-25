@@ -1,12 +1,6 @@
 <RCC>
     <qresource prefix="/pics">
-        <file>bg.png</file>
-        <file>player.png</file>
-        <file>homer.jpeg</file>
-        <file>enemy.png</file>
-        <file>bulletP.png</file>
         <file>bg1.png</file>
-        <file>car.svg</file>
         <file>car1.png</file>
         <file>B.png</file>
         <file>G.png</file>

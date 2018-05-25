@@ -27,11 +27,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += main.cpp\
         MainWindow.cpp \
     Enemy.cpp \
-    Player.cpp
+    Player.cpp \
+    Health.cpp
 
 HEADERS  += MainWindow.H \
     Enemy.H \
-    Player.H
+    Player.H \
+    Health.H
 
 RESOURCES += \
     road.qrc

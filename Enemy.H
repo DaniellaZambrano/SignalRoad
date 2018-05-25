@@ -9,6 +9,7 @@
 #include <QGraphicsScene>
 #include <QDebug>
 #include <stdlib.h>
+#include <QList>
 
 class Enemy : public QObject, public QGraphicsPixmapItem
 {

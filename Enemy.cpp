@@ -1,5 +1,15 @@
 #include "Enemy.H"
 
+#include <typeinfo>
+
+#include "Player.H"
+#include "MainWindow.H"
+
+class MainWindow;
+
+extern MainWindow *game;
+
+
 Enemy::Enemy()
 {
     //random position
@@ -51,4 +61,22 @@ void Enemy::move()
         scene()->removeItem(this);
         delete this;
     }
+
+
+    //Collide with the player
+    QList <QGraphicsItem *> collide = collidingItems();
+
+    for(int i = 0, n = collide.size(); i < n; i++)
+    {
+        if(typeid(*(collide[i])) == typeid (Player))
+        {
+            qDebug() << "collision";
+            //decrease health
+            game->health->decrease();
+            scene()->removeItem(this);
+
+            delete this;
+        }
+    }
+
 }
