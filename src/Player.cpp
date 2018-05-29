@@ -3,6 +3,10 @@
 #include <QList>
 #include <typeinfo>
 
+#include "MainWindow.H"
+class MainWindow;
+
+extern MainWindow *game;
 
 Player::Player(QGraphicsItem *parent) : QGraphicsPixmapItem(parent)
 {
@@ -15,12 +19,12 @@ Player::Player(QGraphicsItem *parent) : QGraphicsPixmapItem(parent)
 void Player::keyPressEvent(QKeyEvent *event)
 {
     // move the player left and right
-    if (event->key() == Qt::Key_Left)
+    if (event->key() == Qt::Key_A)
     {
         if (pos().x() > 300)
             setPos(x()-130,y());
     }
-    else if (event->key() == Qt::Key_Right)
+    else if (event->key() == Qt::Key_D)
     {
         if (pos().x() + 100 < 600)
             setPos(x()+130,y());
@@ -51,22 +55,10 @@ void Player::setDirection(Player::Movement direction)
 //Emerge an enemy
 void Player::emerge()
 {
-    //create an enemy
-    Enemy *enemy = new Enemy();
-    scene()->addItem(enemy);
-
-
-//    //Collide with the player
-//    QList <QGraphicsItem *> collide = collidingItems();
-
-//    for(int i = 0, n = collide.size(); i < n; i++)
-//    {
-//        if(typeid(*(collide[i])) == typeid (Enemy))
-//        {
-//            //decrease health
-//            windowMain->health->decrease();
-
-//            qDebug() << "collision";
-//        }
-//    }
+    if(!game->health->stoop)
+    {
+        //create an enemy
+        Enemy *enemy = new Enemy();
+        scene()->addItem(enemy);
+    }
 }

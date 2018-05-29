@@ -29,13 +29,19 @@ SOURCES += main.cpp\
     ../src/Enemy.cpp \
     ../src/Health.cpp \
     ../src/MainWindow.cpp \
-    ../src/Player.cpp
+    ../src/Player.cpp \
+    ../src/BackGround.cpp \
+    ../src/Upgrades.cpp
+
 
 HEADERS  += \
     ../includ/Enemy.H \
     ../includ/Health.H \
     ../includ/MainWindow.H \
-    ../includ/Player.H
+    ../includ/Player.H \
+    ../includ/BackGround.H \
+    ../includ/Upgrades.H
+
 
 RESOURCES += \
     ../pics/road.qrc

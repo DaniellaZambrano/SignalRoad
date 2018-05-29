@@ -13,10 +13,12 @@
 #include <QFont>
 //#include <QMediaPlayer>
 #include <QImage>
-
+#include <QPushButton>
+#include <QMenu>
 
 #include "Player.H"
 #include "Health.H"
+#include "BackGround.H"
 
 class MainWindow : public QMainWindow
 {
@@ -27,12 +29,30 @@ public:
     ~MainWindow();
 
     void CenterandResize();
+    void lostText();
 
     QGraphicsScene *scene;
     QGraphicsView *view;
-
+    QPushButton *play;
+    QGraphicsTextItem *text;
+    QGraphicsTextItem *lost;
     Player *player;
-    Health * health;
+    Health *health;
+    BackGround *back;
+
+    QMenu *file;
+    QAction *newGame;
+    QAction *quit;
+    QAction *contin;
+    QAction *pause;
+
+public slots:
+    void startMenu();
+    void launchGame();
+//    void show();
+//    void hide();
+    void active();
+    void desactive();
 };
 
 

@@ -6,41 +6,24 @@
 #include <QSignalTransition>
 #include <QState>
 
-//class MainWindow;
-
+#include <QGraphicsScene>
 class Health : public QGraphicsTextItem{
-
 public:
 
     Health(QGraphicsItem *parent = 0);
-
-    int getHealth();
     void decrease();
 
-private:
+    bool stoop;
 
+//protected:
+
+private:
     int health;
 
-    friend class UpdateScoreState;
-    friend class UpdateScoreTransition;
+
+public slots:
+    void hideeen();
+    void active();
 };
-
-class UpdateScoreState : public QState
-{
-public:
-    UpdateScoreState(QState *parent);
-};
-
-
-class UpdateScoreTransition : public QSignalTransition
-{
-public:
-   // UpdateScoreTransition(MainWindow *game,  Health *health, QAbstractState *target);
-
-private:
-    Health * health;
-    //MainWindow * game;
-};
-
 
 #endif // HEALTH_H

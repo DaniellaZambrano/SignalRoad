@@ -52,31 +52,32 @@ Enemy::Enemy()
 
 void Enemy::move()
 {
-    // move enemy down
-    setPos(x(),y()+5);
-
-    //destroy enemy when it goes out of the screen
-    if(pos().y() > 600)
+    if(!game->health->stoop)
     {
-        scene()->removeItem(this);
-        delete this;
-    }
+        // move enemy down
+        setPos(x(),y()+5);
 
-
-    //Collide with the player
-    QList <QGraphicsItem *> collide = collidingItems();
-
-    for(int i = 0, n = collide.size(); i < n; i++)
-    {
-        if(typeid(*(collide[i])) == typeid (Player))
+        //destroy enemy when it goes out of the screen
+        if(pos().y() > 600)
         {
-            qDebug() << "collision";
-            //decrease health
-            game->health->decrease();
             scene()->removeItem(this);
-
             delete this;
         }
-    }
 
+
+        //Collide with the player
+        QList <QGraphicsItem *> collide = collidingItems();
+
+        for(int i = 0, n = collide.size(); i < n; i++)
+        {
+            if(typeid(*(collide[i])) == typeid (Player))
+            {
+                //decrease health
+                game->health->decrease();
+                scene()->removeItem(this);
+
+                delete this;
+            }
+        }
+    }
 }
