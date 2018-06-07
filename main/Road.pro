@@ -29,13 +29,25 @@ SOURCES += main.cpp\
     ../src/Enemy.cpp \
     ../src/Health.cpp \
     ../src/MainWindow.cpp \
-    ../src/Player.cpp
+    ../src/Player.cpp \
+    ../src/BackGround.cpp \
+    ../src/Upgrades.cpp \
+    ../src/Score.cpp \
+    ../src/Buttons.cpp \
+    ../src/Sensor.cpp
+
 
 HEADERS  += \
     ../includ/Enemy.H \
     ../includ/Health.H \
     ../includ/MainWindow.H \
-    ../includ/Player.H
+    ../includ/Player.H \
+    ../includ/BackGround.H \
+    ../includ/Upgrades.H \
+    ../includ/Score.H \
+    ../includ/Buttons.H \
+    ../includ/Sensor.H
+
 
 RESOURCES += \
-    ../pics/road.qrc
+    ../media/road.qrc

@@ -12,12 +12,16 @@
 
 #include <QGraphicsScene>
 #include "Enemy.H"
+#include "Upgrades.H"
+#include "Sensor.H"
 
 class Player : public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
 public:
     Player(QGraphicsItem *parent = 0);
+    ~Player();
+
     void keyPressEvent(QKeyEvent *event);
 
     enum Movement {
@@ -34,6 +38,10 @@ public:
 
     void updateMovement();
 
+    Sensor *s1 = new Sensor;
+    Sensor *s2 = new Sensor;
+    Sensor *s3 = new Sensor;
+
 private:
     int speed;
    // int ;   enemies
@@ -46,7 +54,7 @@ private:
 
 public slots:
     void emerge();
-
+    void bonus();
 };
 
 #endif // PLAYER_H

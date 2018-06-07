@@ -1,0 +1,37 @@
+<RCC>
+    <qresource prefix="/pics">
+        <file>bg1.png</file>
+        <file>car1.png</file>
+        <file>B.png</file>
+        <file>G.png</file>
+        <file>P.png</file>
+        <file>Y.png</file>
+        <file>car2.png</file>
+        <file>car3.png</file>
+        <file>left.png</file>
+        <file>right.png</file>
+        <file>health.png</file>
+        <file>score.png</file>
+        <file>car4.png</file>
+    </qresource>
+    <qresource prefix="/music">
+        <file>prueba1.mp3</file>
+        <file>Intro.mp3</file>
+        <file>A y d.mp3</file>
+        <file>C to continue.mp3</file>
+        <file>Ctrl+N.mp3</file>
+        <file>S to stop.mp3</file>
+        <file>Space.mp3</file>
+        <file>Q to quit.mp3</file>
+        <file>Started.mp3</file>
+        <file>Lost.mp3</file>
+        <file>Front.mp3</file>
+        <file>Left.mp3</file>
+        <file>Right.mp3</file>
+        <file>You crashed.mp3</file>
+        <file>help mode.mp3</file>
+        <file>h to help.mp3</file>
+        <file>continue.mp3</file>
+        <file>pause.mp3</file>
+    </qresource>
+</RCC>

@@ -9,11 +9,14 @@ class MainWindow;
 
 extern MainWindow *game;
 
+#include "Sensor.H"
 
 Enemy::Enemy()
 {
     //random position
     int randomNum = rand() % 900;
+
+    setZValue(3);
 
     /*
      * Depends on the position the vibrations
@@ -42,6 +45,10 @@ Enemy::Enemy()
 
     setRotation(180);       //Reverse to the player
 
+    game->player->s1->show();
+    game->player->s2->show();
+    game->player->s3->show();
+
     //pass the time
     QTimer * timer = new QTimer();
     connect(timer,SIGNAL(timeout()),this,SLOT(move()));
@@ -50,33 +57,85 @@ Enemy::Enemy()
 
 }
 
+Enemy::~Enemy()
+{
+
+}
+
 void Enemy::move()
 {
-    // move enemy down
-    setPos(x(),y()+5);
-
-    //destroy enemy when it goes out of the screen
-    if(pos().y() > 600)
+    if(!game->health->stoop)
     {
-        scene()->removeItem(this);
-        delete this;
-    }
+        // move enemy down
+        setPos(x(),y()+5);
 
-
-    //Collide with the player
-    QList <QGraphicsItem *> collide = collidingItems();
-
-    for(int i = 0, n = collide.size(); i < n; i++)
-    {
-        if(typeid(*(collide[i])) == typeid (Player))
+        //destroy enemy when it goes out of the screen
+        if(pos().y() > 600)
         {
-            qDebug() << "collision";
-            //decrease health
-            game->health->decrease();
             scene()->removeItem(this);
-
             delete this;
         }
-    }
 
+        //Collide with the player
+        QList <QGraphicsItem *> collide = collidingItems();
+
+        for(int i = 0, n = collide.size(); i < n; i++)
+        {
+            if(typeid(*(collide[i])) == typeid (Player))
+            {
+                if(game->health->health > 1)
+                {
+                    playList = new QMediaPlaylist();
+                    playList->addMedia(QUrl("qrc:/music/You crashed.mp3"));
+
+                    music = new QMediaPlayer();
+                    music->setPlaylist(playList);
+                    music->play();
+                }
+
+                //decrease health
+                game->health->decrease();
+                scene()->removeItem(this);
+
+                delete this;
+            }
+            else if(typeid(*(collide[i])) == typeid (Sensor))
+            {
+                if(collide[i] == game->player->s1)
+                {
+                    playList = new QMediaPlaylist();
+                    playList->addMedia(QUrl("qrc:/music/Left.mp3"));
+
+                    music = new QMediaPlayer();
+                    music->setPlaylist(playList);
+                    music->play();
+
+                    game->player->s1->hide();
+                }
+
+                if(collide[i] == game->player->s2)
+                {
+                    playList = new QMediaPlaylist();
+                    playList->addMedia(QUrl("qrc:/music/Front.mp3"));
+
+                    music = new QMediaPlayer();
+                    music->setPlaylist(playList);
+                    music->play();
+
+                    game->player->s2->hide();
+                }
+                if(collide[i] == game->player->s3)
+                {
+                    playList = new QMediaPlaylist();
+                    playList->addMedia(QUrl("qrc:/music/Right.mp3"));
+
+                    music = new QMediaPlayer();
+                    music->setPlaylist(playList);
+                    music->play();
+
+                    game->player->s3->hide();
+                }
+            }
+        }
+    }
 }

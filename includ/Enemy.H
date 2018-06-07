@@ -11,11 +11,18 @@
 #include <stdlib.h>
 #include <QList>
 
+#include <QMediaPlayer>
+#include <QMediaPlaylist>
+
 class Enemy : public QObject, public QGraphicsPixmapItem
 {
    Q_OBJECT
 public:
     Enemy();
+    ~Enemy();
+
+    QMediaPlaylist *playList;
+    QMediaPlayer *music;
 
 public slots:
     void move();
